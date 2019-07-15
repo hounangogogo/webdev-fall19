@@ -22,9 +22,17 @@ public class UserService {
     // function listening to register request
     @PostMapping("/register")
     public User register(@RequestBody User user, HttpSession session) {
-        User cu = userRepository.save(user);
-        session.setAttribute("currentUser", cu);
-        return cu;
+        // first check this username has been taken or not
+        Boolean usernameExits = (userRepository.isUsernameTaken(user.getUsername()));
+        if(usernameExits) {
+            throw new Error("Username Exits");
+
+        }
+        else {
+            User cu = userRepository.save(user);
+            session.setAttribute("currentUser", cu);
+            return cu;
+        }
     }
 
 
@@ -32,10 +40,6 @@ public class UserService {
     @PostMapping("/login")
     public User login(@RequestBody User user, HttpSession session) {
         user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-        System.out.println("-------------------");
-        System.out.println(user.getUsername());
-        System.out.println(user.getPassword());
-        System.out.println("-------------------");
         session.setAttribute("currentUser", user);
         return user;
     }

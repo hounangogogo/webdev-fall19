@@ -7,6 +7,8 @@
 
         $username = $("#username");
         $email = $("#email");
+
+        // Get currentUser information from Session Attribute
         profile()
             .then(renderUser);
     }
