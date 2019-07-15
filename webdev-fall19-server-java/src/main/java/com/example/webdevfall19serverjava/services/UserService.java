@@ -39,7 +39,10 @@ public class UserService {
     // function listening to login request
     @PostMapping("/login")
     public User login(@RequestBody User user, HttpSession session) {
-        user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+        User user_ = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+
+        // if user cannot get the username, it will return error
+        System.out.println(user.getUsername());
         session.setAttribute("currentUser", user);
         return user;
     }
