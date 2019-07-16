@@ -3,10 +3,7 @@ package com.example.webdevfall19serverjava.services;
 import com.example.webdevfall19serverjava.models.User;
 import com.example.webdevfall19serverjava.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -62,5 +59,9 @@ public class UserService {
         return userRepository.findById(currentUser.getId());
     }
 
-
+    // function is to delete the user from database base on id
+    @DeleteMapping("/api/user/delete/{userId}")
+    public void deleteUser(@PathVariable("userId") int id) {
+        userRepository.deleteById(id);
+    }
 }

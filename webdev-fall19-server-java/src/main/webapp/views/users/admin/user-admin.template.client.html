@@ -6,6 +6,50 @@
     <link href="../../../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Admin</h1>
+    <div class="container">
+        <h1>Admin Page</h1>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th><input></th>
+                        <th><input></th>
+                        <th><input></th>
+                        <th>
+                            <select>
+                                <option value="Faculty">Faculty</option>
+                                <option value="Student">Student</option>
+                                <option value="Professor">Professor</option>
+                                <option value="TA">TA</option>
+
+                            </select>
+                        </th>
+                        <th>
+                            <button>Update</button>
+                            <button>Delete</button>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <script src="../../../js/jquery-3.4.1.min.js"></script>
+    <script src="user-admin.controller.client.js"></script>
 </body>
 </html>
