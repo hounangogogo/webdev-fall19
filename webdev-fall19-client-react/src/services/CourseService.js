@@ -9,6 +9,19 @@ class CourseService {
             });
     }
 
+    createCourse(course) {
+        return fetch(this.COURSE_API_URL, {
+            method:'post',
+            body:JSON.stringify(course),
+            headers:{
+                'content-type':'application/json'
+            }
+        })
+            .then(function (response) {
+                return response.json();
+            })
+    }
+
     constructor(singletonToken) {
         if (_singleton !== singletonToken)
             throw new Error('Cannot instantiate directly.');

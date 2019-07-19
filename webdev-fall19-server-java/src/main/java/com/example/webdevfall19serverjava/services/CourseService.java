@@ -3,9 +3,7 @@ package com.example.webdevfall19serverjava.services;
 import com.example.webdevfall19serverjava.models.Course;
 import com.example.webdevfall19serverjava.repositories.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,5 +18,11 @@ public class CourseService {
     public List<Course> findAllCourses() {
         System.out.println("dddddddd");
         return (List<Course>) courseRepository.findAll();
+    }
+
+    @PostMapping("/api/course")
+    public Course createCourse(@RequestBody Course course) {
+        return courseRepository.save(course);
+
     }
 }

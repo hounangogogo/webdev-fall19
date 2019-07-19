@@ -27,9 +27,13 @@ class CourseList extends React.Component{
 
     // bind to create course button
     crateCourse=()=>{
-        console.log(this.state.newCourse);
-        this.state.courses.push(this.state.newCourse);
-        this.setState({courses:this.state.courses})
+        this.courseService.createCourse(this.state.newCourse)
+            .then((course)=>
+                this.courseService.findAllCourses()
+                    .then(courses=>{
+                        this.setState({courses:courses})
+                    })
+            );
     }
 
     render() {
