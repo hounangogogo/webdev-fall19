@@ -17,13 +17,35 @@ class CourseList extends React.Component{
             });
     }
 
+    // bind to input field
+    formChange=(event) => {
+        console.log(event.target.value);
+        this.setState({newCourse:{
+            title:event.target.value
+            }})
+    }
+
+    // bind to create course button
+    crateCourse=()=>{
+        console.log(this.state.newCourse);
+        this.state.courses.push(this.state.newCourse);
+        this.setState({courses:this.state.courses})
+    }
+
     render() {
         return (
             <div>
                 <h2>Course List</h2>
 
                 <table className="table">
-                    <thead><tr><th>Title</th></tr></thead>
+                    <thead>
+                        <tr><th>Title</th></tr>
+                        <tr>
+                            <th><input onChange={this.formChange} className="form-control"/></th>
+                            <th><button onClick={this.crateCourse} className="btn btn-success">Add Course</button></th>
+                        </tr>
+                    </thead>
+
                     <tbody>{this.state.courses.map((course, index)=>
                     <CourseRow key={index} course={course}/>)}</tbody>
                 </table>
