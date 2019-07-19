@@ -26,15 +26,23 @@ class CourseList extends React.Component{
     }
 
     // bind to create course button
-    crateCourse=()=>{
+    crateCourse =() => {
         this.courseService.createCourse(this.state.newCourse)
             .then((course)=>
-                this.courseService.findAllCourses()
-                    .then(courses=>{
-                        this.setState({courses:courses})
-                    })
-            );
+                    this.courseService.findAllCourses())
+            .then(courses=>{
+                this.setState({courses:courses})
+            })
     }
+
+
+    // bind to delete button
+    deleteCourse = (courseId) => {
+        this.courseService.deleteCourse(courseId)
+            .then(() => this.courseService.findAllCourses())
+            .then(courses => {this.setState({courses: courses})})
+    };
+
 
     render() {
         return (
@@ -51,7 +59,7 @@ class CourseList extends React.Component{
                     </thead>
 
                     <tbody>{this.state.courses.map((course, index)=>
-                    <CourseRow key={index} course={course}/>)}</tbody>
+                    <CourseRow deleteCourse={this.deleteCourse} key={index} course={course}/>)}</tbody>
                 </table>
             </div>
         )

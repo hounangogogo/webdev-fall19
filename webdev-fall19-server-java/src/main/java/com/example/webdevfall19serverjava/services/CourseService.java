@@ -16,13 +16,16 @@ public class CourseService {
 
     @GetMapping("/api/course")
     public List<Course> findAllCourses() {
-        System.out.println("dddddddd");
         return (List<Course>) courseRepository.findAll();
     }
 
     @PostMapping("/api/course")
     public Course createCourse(@RequestBody Course course) {
         return courseRepository.save(course);
+    }
 
+    @DeleteMapping("/api/course/{courseId}")
+    public void deleteCourse(@PathVariable("courseId") int id) {
+        courseRepository.deleteById(id);
     }
 }

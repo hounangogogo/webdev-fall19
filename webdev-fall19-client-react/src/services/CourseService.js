@@ -9,6 +9,16 @@ class CourseService {
             });
     }
 
+    deleteCourse(courseId) {
+        return fetch(this.COURSE_API_URL + '/' + courseId, {
+            method:'delete',
+        })
+            .then(function (response) {
+                return response;
+            })
+    }
+
+
     createCourse(course) {
         return fetch(this.COURSE_API_URL, {
             method:'post',
