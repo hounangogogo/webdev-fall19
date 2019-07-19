@@ -1,18 +1,19 @@
 package com.example.webdevfall19serverjava.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-public class Course {
+public class Topic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    @OneToMany(mappedBy = "course")
-    private List<Module> modules;
-
+    @ManyToOne
+    @JsonIgnore
+    private Lesson lesson;
 
     public int getId() {
         return id;
@@ -30,11 +31,11 @@ public class Course {
         this.title = title;
     }
 
-    public List<Module> getModules() {
-        return modules;
+    public Lesson getLesson() {
+        return lesson;
     }
 
-    public void setModules(List<Module> modules) {
-        this.modules = modules;
+    public void setLesson(Lesson lesson) {
+        this.lesson = lesson;
     }
 }
