@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import '../node_modules/font-awesome/css/font-awesome.min.css';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 
-import LessonTab from './LessonTab';
-import TopicPills from './TopicPills';
 import CourseList from './container/CourseList';
+import CourseEditor from './container/CourseEditor';
 
 
 // This function is convert ModuleListItem to stateless function
@@ -126,44 +125,13 @@ class CourseCard extends React.Component {
 }
 
 
-const Page1 = () =>
-    <h2>Page 1</h2>
-
-const Page2 = () => {
-    return(
-        <h2>Page 2</h2>
-    )
-};
-
-const PageParam = ({match}) => {
-    return(
-        <h2>PageParam {
-            match.params.something
-        }
-        </h2>
-    )
-};
-
-
 class WhiteBoard extends React.Component {
     render() {
         return (
-            <Router>
-                <div className="container-fluid">
-                    <h1>WhiteBoard</h1>
-                    <CourseList/>
-
-{/*                    <TopicPills/>
-                    <LessonTab/>
-                    <ModuleList/>
-                    <div className="card-deck">
-                        <CourseCard/>
-                        <CourseCard/>
-                        <CourseCard/>
-                    </div>*/}
-                </div>
-            </Router>
-
+            <div className="container-fluid">
+                <h1>WhiteBoard</h1>
+                <CourseList/>
+            </div>
         )
     }
 }
@@ -174,13 +142,9 @@ class App extends React.Component {
         return(
             <Router>
                 <div className="container-fluid">
-                    <Link to="/whiteboard">WhiteBoard</Link> |
-                    <Link to="/page1">Page 1</Link> |
-                    <Link to="/page2">Page 2</Link> |
-                    <Route path='/whiteboard' component={WhiteBoard}/>
-                    <Route path='/page1' component={Page1}/>
-                    <Route path='/page2' component={Page2}/>
-                    <Route path='/pageParam/:something' component={PageParam}/>
+                    <Link to="/whiteboard">WhiteBoard</Link>
+                    <Route path='/whiteboard' component={WhiteBoard}/>
+                    <Route path='/course/:courseId' component={CourseEditor}/>
                 </div>
             </Router>
         );
