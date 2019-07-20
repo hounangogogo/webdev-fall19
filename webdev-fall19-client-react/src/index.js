@@ -5,8 +5,10 @@ import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
-import CourseList from './container/CourseList';
-import CourseEditor from './container/CourseEditor';
+import CourseList from './container/courses/CourseList';
+import CourseEditor from './container/courses/CourseEditor';
+
+
 
 
 // This function is convert ModuleListItem to stateless function
