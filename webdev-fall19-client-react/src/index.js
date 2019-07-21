@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import {createStore} from "redux";
+
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
@@ -7,8 +10,9 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 import CourseList from './container/courses/CourseList';
 import CourseEditor from './container/courses/CourseEditor';
-
-
+import WidgetListComponent from './container/widgets/WidgetListComponent';
+import {widgetReducer} from './reducers/widgetReducer';
+import WidgetListContainer from "./container/widgets/WidgetListContainer";
 
 
 // This function is convert ModuleListItem to stateless function
@@ -139,16 +143,25 @@ class WhiteBoard extends React.Component {
 }
 
 
+
+let store = createStore(widgetReducer)
+
+
 class App extends React.Component {
     render() {
         return(
-            <Router>
-                <div className="container-fluid">
-                    <Link to="/whiteboard">WhiteBoard</Link>
-                    <Route path='/whiteboard' component={WhiteBoard}/>
-                    <Route path='/course/:courseId' component={CourseEditor}/>
-                </div>
-            </Router>
+            <Provider store={store}>
+                <Router>
+                    <div className="container-fluid">
+                        <Link to="/whiteboard">WhiteBoard</Link> |
+                        <Link to="/widgets">Widgets</Link>
+                        <Route path='/whiteboard' component={WhiteBoard}/>
+                        <Route path='/course/:courseId' component={CourseEditor}/>
+                        <Route path='/widgets' component={WidgetListContainer}/>
+                    </div>
+                </Router>
+            </Provider>
+
         );
     }
 }
