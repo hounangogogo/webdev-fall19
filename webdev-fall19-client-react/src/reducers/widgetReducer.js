@@ -15,6 +15,8 @@ export const widgetReducer = (
     action) => {
 
     switch (action.type) {
+
+
         case 'FIND_ALL_WIDGETS':
             console.log(action.widgets);
             return {

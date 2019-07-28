@@ -33,7 +33,7 @@ const dispatcherToPropertyMapper = dispatch => (
                 type: 'FIND_ALL_WIDGETS',
                 widgets: widgets
             }))
-        )
+        ),
     }
 )
 

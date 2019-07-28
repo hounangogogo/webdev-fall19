@@ -44,6 +44,8 @@ class WidgetListComponent extends React.Component {
                         <li className="list-group-item"
                             key={index}>
                             {widget.title} ({widget.id}) - {widget.widgetType}
+
+
                             <button className="float-right btn btn-danger"
                                     onClick={() => this.props.deleteWidget(widget.id)}>Delete</button>
                             <div>
