@@ -32,7 +32,8 @@ mongoose.connect('mongodb://localhost/webdev-fall-2019')
 const userService = require('./services/user.service.server'); //(app);
 userService(app);
 
-
+const sectionService = require('./services/section.service.server');
+sectionService(app);
 //require('./services/user.service.server')(app);
 
 
