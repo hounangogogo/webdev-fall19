@@ -28,10 +28,24 @@
   <div class="col-4">
     <h2>Lesson</h2>
     <ul class="list-group">
-      <li *ngFor="let lesson of selectedModule.lessons"
+      <li (click)="selectLesson(lesson)"
+          [ngClass]="{'active': lesson.id === selectedLesson.id}"
+          *ngFor="let lesson of selectedModule.lessons"
           class="list-group-item">
         {{lesson.title}}
       </li>
     </ul>
   </div>
+
+
+  <div class="col-4">
+    <h2>Topic</h2>
+    <ul class="list-group">
+      <li *ngFor="let topic of selectedLesson.topics"
+          class="list-group-item">
+        {{topic.title}}
+      </li>
+    </ul>
+  </div>
+
 </div>
