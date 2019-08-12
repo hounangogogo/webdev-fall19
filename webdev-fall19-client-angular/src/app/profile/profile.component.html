@@ -1,1 +1,10 @@
-<p>profile works!{{currentUser.username}}</p>
+<h2>Welcome {{currentUser.username}}</h2>
+
+<h3>Enrollments</h3>
+
+<ul class="list-group">
+  <li *ngFor="let section of currentUser.sections" class="list-group-item">
+    {{section.title}}
+    <button (click)="dropSession(section._id)" class="btn btn-danger float-right">Drop</button>
+  </li>
+</ul>

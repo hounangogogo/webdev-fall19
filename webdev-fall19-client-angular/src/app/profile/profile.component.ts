@@ -10,9 +10,14 @@ export class ProfileComponent implements OnInit {
   currentUser = {}
   constructor(private userService: UserServiceClient) { }
 
+  dropSession = (sessionId) =>
+    console.log(sessionId)
+
+
   ngOnInit() {
     this.userService.currentUser()
-      .then(user => this.currentUser = user
+      .then(user =>
+        this.currentUser = user
       );
   }
 

@@ -5,10 +5,15 @@ import {Injectable} from '@angular/core';
 export class  SectionServiceClient {
 
 
-  enroll = (sectionId) =>
-    fetch('http://localhost:3000/api/section/' + sectionId + '/enroll', {
+  enroll = (section) =>
+    fetch('http://localhost:3000/api/section/' + section._id + '/enroll', {
       method: 'put',
-      credentials: 'include'
+      headers: {
+        'content-type': 'application/json'
+      },
+      credentials: 'include',
+      body: JSON.stringify(section)
+
     })
 
   findAllSections = () =>
