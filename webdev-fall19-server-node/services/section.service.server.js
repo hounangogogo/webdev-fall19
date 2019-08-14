@@ -9,7 +9,7 @@ module.exports = app => {
         console.log("----------");
 
         sectionModel
-            .enroll(currentUser._id, req.params['sectionId'])
+            .enroll(currentUser._id, req.body)
             .then(status => res.sendStatus(200))
     })
 

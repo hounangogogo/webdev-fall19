@@ -27,13 +27,16 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/webdev-fall-2019')
 
 
-
+const quizService = require('./services/quiz.serivce.server');
+quizService(app);
 
 const userService = require('./services/user.service.server'); //(app);
 userService(app);
 
 const sectionService = require('./services/section.service.server');
 sectionService(app);
+
+require('./services/question.service.server')(app);
 //require('./services/user.service.server')(app);
 
 

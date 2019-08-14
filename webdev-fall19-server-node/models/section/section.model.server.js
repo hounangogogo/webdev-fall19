@@ -4,10 +4,10 @@ const sectionModel = mongoose.model('SectionModel', sectionSchema);
 
 const userModel = require('../user/user.model.server');
 
-enroll = (userId, sectionId) =>
+enroll = (userId, section) =>
     userModel.findUserById(userId)
         .then(user => {
-            user.sections.push(sectionId);
+            user.sections.push(section);
             return user.save();
         })
 

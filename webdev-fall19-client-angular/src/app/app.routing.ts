@@ -5,6 +5,8 @@ import {RegisterComponent} from './register/register.component';
 import {ProfileComponent} from './profile/profile.component';
 import {SectionsComponent} from './sections/sections.component';
 import {EnrollmentComponent} from './enrollment/enrollment.component';
+import {QuizListComponent} from './quiz-list/quiz-list.component';
+import {QuizTakerComponent} from './quiz-taker/quiz-taker.component';
 
 
 const appRoutes: Routes = [
@@ -13,7 +15,9 @@ const appRoutes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'courses', component: CourseNavigatorComponent},
-  {path: 'sections', component: SectionsComponent}
+  {path: 'sections', component: SectionsComponent},
+  {path: 'quizzes', component: QuizListComponent},
+  {path: 'quiz/:quizId', component: QuizTakerComponent}
 ];
 
 
